@@ -48,7 +48,7 @@ Screen 2 only has the following functionality:
 ### Non-Functional Requirements
 
 - Do not use the GIPHY SDK. Any other third-party libraries can be used.
-- The app should be written in TypeScript
+- The app should be written in TypeScript and Next.js according to latest standards and best-practices
 - Create a README with the following information (please be clear and concise):
    - A brief description of the overall app architecture and the reasoning behind picking it over any other possible alternatives.
    - A brief explanation of third-party libraries used and the justification for their inclusion.
