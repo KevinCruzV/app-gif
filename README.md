@@ -59,7 +59,7 @@ Screen 2 only has the following functionality:
 
 - We value clean, readable, modern, and idiomatic TypeScript. Your code will be reviewed by other developers, so make sure it is easy to follow and well-structured.
 - Don't feel the need to over-engineer your solution. It should be tailored to the problem statement. We prefer concise and simple solutions over lengthy ones. However, it should be straightforward to re-use the components and extend the app with new features.
-- At Picnic, we care about security, but for the purpose of this assignment, the API key can be included via an environment file or used directly in the code.
+- At Picnic, we care about security, and thought should be given to best practices but for the purpose of this assignment.
 - We use linting/formatting to ensure consistency at Picnic, but for this assignment linting/formatting is allowed but not required.
 - There are no specific folder structure/naming convention requirements, but they should be consistent throughout the codebase. The assignment should contain unit tests, however 100% coverage is not expected. UI/Snapshot tests are not required.
 - Thought should be given to how the code can fail and what that means for the end-user of the app. Feedback can be as simple as showing an alert or text on the screen.
