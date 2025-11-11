@@ -1,0 +1,29 @@
+{
+  "name": "app-gif",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Picnic recruitment task implementation: GIF browser built with Next.js and TypeScript.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.19",
+    "@types/react": "18.2.43",
+    "@types/react-dom": "18.2.17",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.1.0",
+    "typescript": "5.3.3",
+    "vitest": "1.2.2"
+  }
+}
