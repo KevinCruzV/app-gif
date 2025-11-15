@@ -7,6 +7,7 @@ export default defineConfig({
     setupFiles: ["./src/setupTests.ts"],
     include: ["tests/**/*.test.ts"],
     coverage: { reporter: ["text", "html"] },
+    pool: "threads",
     globals: true,
     css: true,
   },
