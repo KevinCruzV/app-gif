@@ -20,7 +20,7 @@ export async function getGiphyBySearch(
 ): Promise<GiphyGif[]> {
   const qs = new URLSearchParams({ q, limit: String(limit), rating });
   const res = await http<GiphySearchResponse>(`/search?${qs.toString()}`);
-  
+
   const envelope = GiphySearchResponseSchema.safeParse(res);
   if (!envelope.success) {
     throw new Error("Invalid /search payload");

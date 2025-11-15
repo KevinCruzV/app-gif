@@ -82,7 +82,7 @@ export default function GifDetailPage() {
 
       {!isLoading && !error && gif && (
         <section className="mt-2">
-          <GifCard gif={gif} mode="animated" className="w-full" />
+          <GifCard gif={gif} mode="animated" className="w-full" showLink />
         </section>
       )}
     </main>

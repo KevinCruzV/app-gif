@@ -9,6 +9,7 @@ import RatingBadge from "./RatingBadge";
 export default function GifCard({
   gif,
   mode = "animated",
+  showLink = false,
   className = "",
 }: gifCardProps) {
   const img = pickImage(gif, mode);
@@ -35,7 +36,16 @@ export default function GifCard({
           <h2 className="truncate text-sm font-medium text-gray-700">
             {gif.title || "Untitled"}
           </h2>
-          {/*<h3 className="truncate text-xs text-gray-500">{img.url}</h3>*/}
+          {showLink && (
+            <a
+              href={gif.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="truncate text-xs text-blue-600 underline"
+            >
+              {gif.url}
+            </a>
+          )}
         </div>
         <RatingBadge rating={gif.rating} />
       </div>

@@ -7,6 +7,7 @@ import type { GiphyGif } from "@/types/giphy";
 import GifCard from "@/components/GifCard";
 import SearchBar from "@/components/SearchBar";
 import { SEARCH_MIN, RANDOM_ROTATE_MS } from "../lib/constants";
+import { HttpError } from "@/lib/http";
 
 export default function Home() {
   // --- search states ---
@@ -26,16 +27,24 @@ export default function Home() {
   const hasActiveSearch = query.trim().length >= SEARCH_MIN;
   const showRandomSection = !hasActiveSearch && results.length === 0;
 
+  const ratings = ["g", "pg", "pg-13", "r"];
+  const randomRating = useRef(
+    ratings[Math.floor(Math.random() * ratings.length)],
+  );
   // load one random GIF
   const loadRandom = async () => {
     try {
       setIsRandomLoading(true);
-      const gif = await getGiphyRandom("g");
+      const gif = await getGiphyRandom(randomRating.current);
       setRandomGif(gif);
       setRandomError(null);
     } catch (err) {
-      console.error(err);
-      setRandomError("Could not load random GIF.");
+      if (err instanceof HttpError && err.status === 429) {
+        setRandomError("Rate limit reached on Giphy");
+      } else {
+        console.error(err);
+        setRandomError("Could not load random GIF.");
+      }
     } finally {
       setIsRandomLoading(false);
     }
@@ -84,7 +93,7 @@ export default function Home() {
 
     searchTimeoutRef.current = window.setTimeout(async () => {
       try {
-        const gifs = await getGiphyBySearch(trimmed, 24, "g");
+        const gifs = await getGiphyBySearch(trimmed, 24, randomRating.current);
         setResults(gifs);
       } catch (err) {
         console.error(err);
@@ -143,7 +152,7 @@ export default function Home() {
 
           {randomGif && (
             <div className="max-w-md">
-              <GifCard gif={randomGif} mode="animated" />
+              <GifCard gif={randomGif} mode="animated" showLink />
             </div>
           )}
 
@@ -168,7 +177,7 @@ export default function Home() {
             <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
               {results.map((gif) => (
                 <Link key={gif.id} href={`/gif/${gif.id}`} className="block">
-                  <GifCard gif={gif} mode="still" />
+                  <GifCard gif={gif} mode="still" showLink={false} />
                 </Link>
               ))}
             </div>
