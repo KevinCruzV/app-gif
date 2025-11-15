@@ -8,14 +8,10 @@ import GifCard from "@/components/GifCard";
 import SearchBar from "@/components/SearchBar";
 import { SEARCH_MIN, RANDOM_ROTATE_MS } from "../lib/constants";
 import { HttpError } from "@/lib/http";
+import { useSearchStore } from "@/store/searchStore";
 
 export default function Home() {
-  // --- search states ---
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<GiphyGif[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
-
-  // --- random GIF states ---
+  // random GIF states
   const [randomGif, setRandomGif] = useState<GiphyGif | null>(null);
   const [randomError, setRandomError] = useState<string | null>(null);
   const [isRandomLoading, setIsRandomLoading] = useState(false);
@@ -24,13 +20,25 @@ export default function Home() {
   const searchTimeoutRef = useRef<number | undefined>(undefined);
   const rotateIntervalRef = useRef<number | undefined>(undefined);
 
-  const hasActiveSearch = query.trim().length >= SEARCH_MIN;
-  const showRandomSection = !hasActiveSearch && results.length === 0;
-
   const ratings = ["g", "pg", "pg-13", "r"];
   const randomRating = useRef(
     ratings[Math.floor(Math.random() * ratings.length)],
   );
+
+  // store
+  const {
+    query,
+    results,
+    isSearching,
+    setQuery,
+    setResults,
+    setIsSearching,
+    reset,
+  } = useSearchStore();
+
+  const hasActiveSearch = query.trim().length >= SEARCH_MIN;
+  const showRandomSection = !hasActiveSearch && results.length === 0;
+
   // load one random GIF
   const loadRandom = async () => {
     try {
@@ -72,7 +80,7 @@ export default function Home() {
     };
   }, [showRandomSection]);
 
-  // live search avec debounce
+  // live search
   useEffect(() => {
     // clear last timeout if rewrite
     if (searchTimeoutRef.current !== undefined) {
@@ -109,12 +117,10 @@ export default function Home() {
         searchTimeoutRef.current = undefined;
       }
     };
-  }, [query]);
+  }, [query, setResults, setIsSearching]);
 
   const handleCancelSearch = () => {
-    setQuery("");
-    setResults([]);
-    setIsSearching(false);
+    reset();
   };
 
   return (
