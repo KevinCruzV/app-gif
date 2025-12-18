@@ -39,9 +39,9 @@ Built with **TypeScript**, **React Hook Form + Zod**, **ESLint**, **Prettier** a
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/kevcruzv/app-gif.git
+git clone https://github.com/kevincruzv/app-gif.git
 cd app-gif
-yarn install
+npm install
 ```
 
 ### Create a .env.local file at the root
@@ -55,12 +55,11 @@ npm run dev
 ```
 ## Script
 ```bash
-yarn dev
-yarn build
-yarn start
-yarn lint
-yarn format
-yarn test
-yarn test:watch
-yarn test:coverage
+npm run dev
+npm build
+npm start
+npm lint
+npm format
+npm test
+npm test:watch
 ```
