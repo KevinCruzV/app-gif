@@ -11,6 +11,20 @@ Built with **TypeScript**, **React Hook Form + Zod**, **ESLint**, **Prettier** a
 
 ---
 
+## 😎 App
+<img width="1015" height="388" alt="Capture d’écran 2025-11-15 à 14 12 41" src="https://github.com/user-attachments/assets/fea694bc-4c9f-4992-81a7-97a662fe6424" />
+
+---
+
+<img width="1015" height="740" alt="Capture d’écran 2025-11-15 à 14 12 53" src="https://github.com/user-attachments/assets/0b5f4454-05d0-4b33-b7e0-5611da612ca9" />
+
+---
+
+<img width="1015" height="462" alt="Capture d’écran 2025-11-15 à 14 13 04" src="https://github.com/user-attachments/assets/a3fe4ad5-c898-4133-886b-a3cee478c1c8" />
+
+---
+
+
 ## 🚀 Features
 
 - 🔍 Search GIFs by keyword
@@ -63,3 +77,4 @@ npm format
 npm test
 npm test:watch
 ```
+
